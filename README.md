@@ -49,9 +49,8 @@ Current latest tag is version __v3.0.3988__
 
 Inside container
 `/data/ombi` will contain ombi configuration and database
-`/tv` is the root folder of your tv shows
 
-If host `<data path>` or `<tv show path>` does not exist, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
+If host `<data path>` does not exist, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
 
 ### Access supervisor control inside a running instance
 
