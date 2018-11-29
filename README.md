@@ -48,7 +48,7 @@ Current latest tag is version __v3.0.3988__
 ### Volumes
 
 Inside container
-`/data/ombi` will contain ombi configuration and database
+`/data/ombi` will contain ombi configuration and files
 
 If host `<data path>` does not exist, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
 
@@ -62,7 +62,7 @@ If host `<data path>` does not exist, docker will create it automaticly with roo
 
 ## Access point
 
-### Ombi
+### ombi
 
 	Go to http://localhost:OMBI_HTTP_PORT/
 
