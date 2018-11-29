@@ -18,7 +18,7 @@ ENV SERVICE_DATA_PATH /data/${SERVICE_NAME}
 # external paths used by service
 ENV SERVICE_VOLUME_PATH ${SERVICE_DATA_PATH}
 # args used by supervisor context for running service
-ENV SERVICE_EXPORT_ARG SERVICE_DATA_PATH
+ENV SERVICE_EXPORT_ARG SERVICE_DATA_PATH SERVICE_PORT
 
 # System parameters
 ENV PYTHON_MAJOR_VERSION 2
