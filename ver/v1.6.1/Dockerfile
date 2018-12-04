@@ -70,9 +70,10 @@ RUN bash -c "source activate ${CONDA_ENV} && \
                 pip install supervisor==3.3.4"
 
 # SERVICE INSTALL -------------------------------------------------------
-RUN curl -k -SL "https://github.com/tidusjar/Ombi/releases/download/${SERVICE_VERSION}/linux.tar.gz" \
+#RUN curl -k -SL "https://github.com/tidusjar/Ombi/releases/download/${SERVICE_VERSION}/linux.tar.gz" \
+	#| tar -xzf - -C ${SERVICE_INSTALL_DIR}
+RUN  curl -k -SL "$(curl -s https://github.com/tidusjar/Ombi/releases/tags/${SERVICE_VERSION} | grep linux.tar.gz | grep browser_download_url  | head -1 | cut -d \" -f 4)" \
 	| tar -xzf - -C ${SERVICE_INSTALL_DIR}
-
 
 # SUPERVISOR -------------------------------------------------------
 # add supervisor default configuration
