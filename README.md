@@ -12,7 +12,7 @@
 
 for running latest stable version of ombi :
 
-	docker run -d -v $(pwd):/data -p 5000:5000 studioetrange/docker-ombi
+	docker run --name ombi -d -v $(pwd):/data -p 5000:5000 studioetrange/docker-ombi
 
 then go to http://localhost:5000
 
@@ -50,16 +50,26 @@ Current latest tag is version __v3.0.3988__
 Inside container
 `/data/ombi` will contain ombi configuration and files
 
-If host `<data path>` does not exist, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
+If the path of this volume do not exist on the host while your are mounting them inside container, docker will create it automaticly with root user. You should use mkdir before launching docker to control ownership.
 
-### Access supervisor control inside a running instance
+### Access to a running instance
+
+supervisorctl access
 
 	docker exec -it ombi bash -c ". activate ombi && supervisorctl"
+	
+bash access
 
+	docker exec -it ombi bash -c ". activate ombi"
+	
 ### Test a shell inside a new container without ombi running
 
-	docker run -it studioetrange/docker-ombi bash
+	docker run -it --rm studioetrange/docker-ombi bash
+	
+### Stop and destroy all previously launched services
 
+	docker stop ombi && docker rm ombi
+	
 ## Access point
 
 ### ombi
