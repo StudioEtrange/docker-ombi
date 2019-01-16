@@ -12,7 +12,8 @@
 
 for running latest stable version of ombi :
 
-	docker run --name ombi -d -v $(pwd):/data -p 5000:5000 studioetrange/docker-ombi
+	mkdir -p data
+	docker run --name ombi -d -v $(pwd)/data:/data -p 5000:5000 studioetrange/docker-ombi
 
 then go to http://localhost:5000
 
