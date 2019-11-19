@@ -26,6 +26,7 @@ ENV PYTHON_VERSION 2.7.15
 ENV MINICONDA_VERSION 4.5.11
 ENV CONDA_ENV ${SERVICE_NAME}
 ENV PATH /opt/miniconda/bin:$PATH
+ENV SUPERVISOR_VERSION 4.0.3
 
 # TREE FILESYSTEM --------------------------------------------------
 RUN mkdir -p /etc/supervisor/conf.d && mkdir -p /var/log/supervisor && mkdir -p "${SERVICE_INSTALL_DIR}"
@@ -67,7 +68,7 @@ RUN /opt/miniconda/bin/conda create -y -n ${CONDA_ENV} python=${PYTHON_VERSION}
 
 # install supervisor
 RUN bash -c "source activate ${CONDA_ENV} && \
-                pip install supervisor==3.3.4"
+                pip install supervisor==${SUPERVISOR_VERSION}"
 
 # SERVICE INSTALL -------------------------------------------------------
 #RUN curl -k -SL "https://github.com/tidusjar/Ombi/releases/download/${SERVICE_VERSION}/linux.tar.gz" \

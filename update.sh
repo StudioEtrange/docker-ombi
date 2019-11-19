@@ -17,7 +17,7 @@ VERSION_INVERSE_LAST_CHAR=ON
 USE_TAG_AS_RELEASE=0
 
 # exclude these tag/release name
-EXCLUDE_VERSION=""
+EXCLUDE_VERSION="Ombi-v3.0.2948 Ombi-v3.0.2881"
 
 # INITIALIZE ----------------------------
 version_order_option=
@@ -206,9 +206,9 @@ function github_releases() {
 	done
 
 	for e in $EXCLUDE_VERSION; do
-		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*,,")"
+		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*, ,")"
 	done
-	
+
 	local sorted
 	[ "$max" = "" ] && sorted=$(echo "$(sort_version "$result" "DESC $version_order_option")" | sed -e 's/^ *//' -e 's/ *$//')
 	[ ! "$max" = "" ] && sorted=$(echo "$(sort_version "$result" "DESC $version_order_option")" | tr ' ' '\n' | head -n $max | tr '\n' ' ' | sed -e 's/^ *//' -e 's/ *$//' )
@@ -227,9 +227,9 @@ function github_tags() {
 	done
 
 	for e in $EXCLUDE_VERSION; do
-		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*,,")"
+		result="$(echo $result | sed -e "s,[[:space:]]*$e[[:space:]]*, ,")"
 	done
-	
+
 	local sorted
 	[ "$max" = "" ] && sorted="$(echo "$(sort_version "$result" "DESC $version_order_option")" | sed -e 's/^ *//' -e 's/ *$//')"
 	[ ! "$max" = "" ] && sorted="$(echo "$(sort_version "$result" "DESC $version_order_option")" | tr ' ' '\n' | head -n $max | tr '\n' ' ' | sed -e 's/^ *//' -e 's/ *$//' )"
