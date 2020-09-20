@@ -6,7 +6,7 @@ LABEL description "Ombi on docker"
 
 # Service generic parameters
 ENV SERVICE_NAME ombi
-ENV SERVICE_VERSION v3.0.5202
+ENV SERVICE_VERSION 
 # User id which will launch the service start command (NOTE : supervisord itself is run with root)
 ENV SERVICE_USER 0
 ENV SERVICE_PORT 5000
@@ -78,9 +78,9 @@ RUN  curl -k -SL "$(curl -s https://api.github.com/repos/tidusjar/Ombi/releases/
 
 # SUPERVISOR -------------------------------------------------------
 # add supervisor default configuration
-COPY supervisord.conf /etc/supervisor/supervisord.conf
+COPY files/supervisord.conf /etc/supervisor/supervisord.conf
 # add supervisor service configuration
-COPY supervisord-${SERVICE_NAME}.conf /etc/supervisor/conf.d/supervisord-${SERVICE_NAME}.conf
+COPY files/supervisord-${SERVICE_NAME}.conf /etc/supervisor/conf.d/supervisord-${SERVICE_NAME}.conf
 
 
 # DOCKER RUN PARAMETERS ----------------------------------------------
@@ -95,7 +95,7 @@ EXPOSE 9999
 EXPOSE ${SERVICE_PORT}
 
 # entrypoint
-COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+COPY files/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
