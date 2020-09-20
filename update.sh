@@ -161,8 +161,9 @@ else
 	last_release=$(github_releases "1")
 fi
 
-docker_version_number="$(echo ${last_release} | sed -e "s,${DOCKER_TAG_FILTER_NAME},,g")"
-create_version_folder "latest" "${docker_version_number}"
+echo " * Create release ${last_release}"
+echo " ** Docker tag : latest"
+update_dockerfile "${_CURRENT_FILE_DIR}/Dockerfile" ""
 
 
 echo
@@ -177,7 +178,7 @@ fi
 for rel in ${releases}; do
 
 	docker_version_number="$(echo ${rel} | sed -e "s,${DOCKER_TAG_FILTER_NAME},,g")"
-	create_version_folder "${rel}" "${docker_version_number}"
+	create_version_folder "${docker_version_number}" "${rel}" 
 
 	echo
 done
