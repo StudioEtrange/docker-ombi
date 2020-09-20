@@ -19,7 +19,7 @@ then go to http://localhost:5000
 
 ## Docker tags
 
-Pre-setted buildable docker tag for studioetrange/docker-ombi:__TAG__
+Pre-setted buildable docker tags for studioetrange/docker-ombi:__TAG__
 
 	latest, v3.0.5202, v3.0.4892, v3.0.4887, v3.0.4880, v3.0.4817, v3.0.4680, v3.0.4659, v3.0.4654, v3.0.4256, v3.0.4248, v3.0.4119
 
