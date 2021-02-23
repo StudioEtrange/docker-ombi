@@ -1,6 +1,6 @@
 # docker ombi by StudioEtrange
 
-* Run ombi inside a docker container built upon debian
+* Run [ombi](https://github.com/Ombi-app/Ombi) inside a docker container built upon debian
 * Based on ombi github repository
 * Choice of ombi version
 * Use supervisor to manage ombi process

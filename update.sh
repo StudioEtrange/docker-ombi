@@ -8,7 +8,7 @@ STELLA_LOG_STATE="OFF"
 cd "${_CURRENT_FILE_DIR}"
 
 # PARAMETERS ----------------------------
-GITHUB_REPO="tidusjar/Ombi"
+GITHUB_REPO="Ombi-app/Ombi"
 # remove this string to tag/release name  to use it as docker version (ex : with 'build' value, 'build507' becomes '507')
 DOCKER_TAG_FILTER_NAME=""
 

@@ -71,9 +71,10 @@ RUN bash -c "source activate ${CONDA_ENV} && \
                 pip install supervisor==${SUPERVISOR_VERSION}"
 
 # SERVICE INSTALL -------------------------------------------------------
-#RUN curl -k -SL "https://github.com/tidusjar/Ombi/releases/download/${SERVICE_VERSION}/linux.tar.gz" \
-	#| tar -xzf - -C ${SERVICE_INSTALL_DIR}
-RUN  curl -k -SL "$(curl -s https://api.github.com/repos/tidusjar/Ombi/releases/tags/${SERVICE_VERSION} | grep linux.tar.gz | grep browser_download_url  | head -1 | cut -d \" -f 4)" \
+# NOTE : asset url changed at some point from linux.tar.gz to linux-x64.tar.gz
+RUN selected_version="$(curl -s https://api.github.com/repos/Ombi-app/Ombi/releases/tags/${SERVICE_VERSION} | grep linux-x64.tar.gz | grep browser_download_url  | head -1 | cut -d \" -f 4)" && \
+	if [ "${selected_version}" = "" ]; then selected_version="$(curl -s https://api.github.com/repos/Ombi-app/Ombi/releases/tags/${SERVICE_VERSION} | grep linux.tar.gz | grep browser_download_url  | head -1 | cut -d \" -f 4)"; fi && \
+	curl -k -SL "${selected_version}" \
 	| tar -xzf - -C ${SERVICE_INSTALL_DIR}
 
 # SUPERVISOR -------------------------------------------------------
