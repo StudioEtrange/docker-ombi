@@ -6,7 +6,7 @@ LABEL description "Ombi on docker"
 
 # Service generic parameters
 ENV SERVICE_NAME ombi
-ENV SERVICE_VERSION v4.0.1116
+ENV SERVICE_VERSION v4.0.1089
 # User id which will launch the service start command (NOTE : supervisord itself is run with root)
 ENV SERVICE_USER 0
 ENV SERVICE_PORT 5000
